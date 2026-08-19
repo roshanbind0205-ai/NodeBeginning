@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "express": "^5.2.1",
+    "server": "^1.0.42"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
