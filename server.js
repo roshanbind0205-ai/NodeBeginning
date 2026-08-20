@@ -14,8 +14,10 @@ server.get("/", (req, res) => {
      <input type="number" id="number" name="number1"><br><br>
      <label for="number">Num2:</label>
      <input type="number" id="number" name="number2"><br><br>
-     <button name="option" value="add" type="submit">Add</button>
-     <button name="option" value="sub" type="submit">Sub</button>
+     <input type="radio" name="option" value="add">ADD</input>
+      <input type="radio" name="option" value="sub">Sub</input>
+
+      <button type="submit">Submit</button>
 
      </form>
    `);
