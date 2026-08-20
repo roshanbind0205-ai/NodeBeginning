@@ -1,14 +1,14 @@
-const express = require("express");
+const  express  = require("express");
 const server = express();
 const hostname = "127.0.0.1";
 const port = 3000;
-server.get("/", (req, res) => {
+server.get("/",(req,res)=>{
   const queryObject = req.query;
-  res.setHeader("Content-Type", "application/json");
-
+  res.setHeader("Content-Type","application/json");
   res.send(JSON.stringify(queryObject));
 });
 
-server.listen(port, hostname, () => {
+server.listen(port,hostname,()=>{
   console.log(`Server running at http://${hostname}:${port}/`);
+
 });
