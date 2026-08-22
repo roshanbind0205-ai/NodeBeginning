@@ -1,5 +1,6 @@
 const express = require("express");
 const server = express();
+
 const hostname = "127.0.0.1";
 const port = 3000;
 
@@ -8,24 +9,35 @@ server.use(express.urlencoded({ extended: true }));
 server.get("/", (req, res) => {
   res.send(`
     <form method="POST" action="/submit">
-      <label for="a">A:</label>
-      <input type="text" id="a" name="a"><br><br>
-      <label for="b">B:</label>
-      <input type="text" id="b" name="b"><br><br>
-      <label for="option">Add/Sub</label><input value="add" type="checkbox" id="option" name="option"/><br><br>
+
+      <h3>Select Brand</h3>
+
+      <input type="radio" name="brand" value="Dell"> Dell<br><br>
+      <input type="radio" name="brand" value="Lenovo"> Lenovo<br><br>
+      <input type="radio" name="brand" value="HP"> HP<br><br>
+
+      <h3>Select Storage</h3>
+
+      <input type="checkbox" name="storage" value="HD"> HD<br><br>
+      <input type="checkbox" name="storage" value="SSD"> SSD<br><br>
+      <input type="checkbox" name="storage" value="PD"> PD<br><br>
+
       <button type="submit">Submit</button>
+
     </form>
   `);
 });
 
 server.post("/submit", (req, res) => {
-  let { a, b,option } = req.body;
-  a=Number(a);
-  b=Number(b);
-  let result=a-b;
-  if(option=="add")
-    result=a+b;
-  res.send(`a: ${a}, b: ${b}, option:${option}, Result: ${result}`);
+
+  const brand = req.body.brand;
+  const storage = req.body.storage;
+
+  res.send(`
+    <h2>Selected Details</h2>
+    <p>Brand: ${brand}</p>
+    <p>Storage: ${storage}</p>
+  `);
 });
 
 server.listen(port, hostname, () => {
